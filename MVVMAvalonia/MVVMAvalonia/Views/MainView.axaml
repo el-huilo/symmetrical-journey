@@ -1,0 +1,301 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MVVMAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600" 
+             x:Class="MVVMAvalonia.Views.MainView"
+             x:DataType="vm:MainViewModel"
+			 Loaded="UserControl_Loaded">
+	<UserControl.Styles>
+		<Style Selector="Button:pointerover /template/ ContentPresenter">
+			<Setter Property="Background" Value="#278bef"/>
+		</Style>
+		<Style Selector="TextBox">
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+		<Style Selector="TextBox:focus">
+			<Setter Property="Foreground" Value="Black"/>
+		</Style>
+	</UserControl.Styles>
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Border Name="mainWin" CornerRadius="10" BorderThickness="1" Opacity="0.95" Effect="blur(9)" IsHitTestVisible="False">
+		<Border.BorderBrush>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Color="#6D2FFF" Offset="0"/>
+				<GradientStop Color="#FB539B" Offset="0.5"/>
+				<GradientStop Color="#836EFB" Offset="1"/>
+			</LinearGradientBrush>
+		</Border.BorderBrush>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="250"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Border CornerRadius="10,0,0,10" Grid.Column="0">
+				<Border.Background>
+					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,70%">
+						<GradientStop Color="#24105F" Offset="0"/>
+						<GradientStop Color="#210F55" Offset="1"/>
+					</LinearGradientBrush>
+				</Border.Background>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition Height="50"/>
+					</Grid.RowDefinitions>
+					<Grid Grid.Column="0" Margin="10">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="28"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<StackPanel Orientation="Vertical" Grid.Row="0">
+							<TextBlock Text="Contacts" Foreground="#D5CFF5" FontSize="20"
+									FontFamily="Montserrat" FontWeight="Medium"
+									VerticalAlignment="Center" Margin="4,0,0,0"/>
+							<Border BorderBrush="White" BorderThickness="0,0,0,1"/>
+						</StackPanel>
+						<ListBox Name="contact_listbox" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{ Binding Contacts}" Margin="0,0,0,10" Background="Transparent" SelectionChanged="ListBox_SelectionChanged">
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<Grid Background="Transparent"
+												VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+										<Border BorderBrush="White" BorderThickness="0,0,0,1" Background="">
+											<TextBlock Text="{Binding Name}" HorizontalAlignment="Left"
+													VerticalAlignment="Center" Padding="4"/>
+										</Border>
+										<Border BorderBrush="{Binding Status}" BorderThickness="0,0,2,2"
+												VerticalAlignment="Stretch" Width="60" Height="45" HorizontalAlignment="Right"/>
+									</Grid>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+							<ListBox.Styles>
+								<Style Selector="ListBoxItem">
+									<Setter Property="Padding" Value="0"/>
+									<Setter Property="Background" Value="Transparent"/>
+								</Style>
+								<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+									<Setter Property="BorderBrush" Value="#e285de"/>
+									<Setter Property="BorderThickness" Value="2,0,0,0"/>
+									<Setter Property="Background" Value="#281269"/>
+								</Style>
+								<Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+									<Setter Property="Background" Value="#2B1372"/>
+									<Setter Property="BorderBrush" Value="#e285de"/>
+									<Setter Property="BorderThickness" Value="4,0,0,0"/>
+								</Style>
+							</ListBox.Styles>
+						</ListBox>
+					</Grid>
+					<Border Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="0,0,0,10">
+						<Border.Background>
+							<LinearGradientBrush StartPoint="0%,100%" EndPoint="0%,0%">
+								<GradientStop Color="#FB539B" Offset="0"/>
+								<GradientStop Color="#27003a" Offset="0.07"/>
+								<GradientStop Color="#24105F" Offset="1"/>
+							</LinearGradientBrush>
+						</Border.Background>
+					</Border>
+				</Grid>
+			</Border>
+			<Border CornerRadius="0,10,10,0" Grid.Column="1">
+				<Border.Background>
+					<LinearGradientBrush StartPoint="100%,100%" EndPoint="0%,0%">
+						<GradientStop Color="#0a003a" Offset="0"/>
+						<GradientStop Color="#1c0e49" Offset="1"/>
+					</LinearGradientBrush>
+				</Border.Background>
+				<Grid>
+					<StackPanel Grid.Column="0" Orientation="Horizontal"
+								FlowDirection="RightToLeft" Background="Transparent"
+								Margin="0,0,5,0"/>
+					<Border Name="Blank_Background" VerticalAlignment="Stretch" IsVisible="True">
+						<Border Background="#a1C0C0C0" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="15" CornerRadius="14">
+							<TextBlock Text="Select a user from the list or add a new one"/>
+						</Border>
+					</Border>
+					<Border Name="Add_contact" IsVisible="False">
+						<Border VerticalAlignment="Center" HorizontalAlignment="Center" Width=""
+								BorderThickness="1" BorderBrush="#a03b444b" Padding="35" CornerRadius="20" Background="#14FB539B">
+							<StackPanel Orientation="Horizontal">
+								<StackPanel Width="150">
+									<TextBlock Text="Username" Foreground="DarkGray" FontSize="12" FontWeight="Medium"
+											   FontFamily="Montserrat"/>
+									<TextBox Name="txtUser" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+											 Background="Transparent" CaretBrush="LightGray"
+											 BorderBrush="DarkGray" BorderThickness="0,0,0,1" Height="28"
+											 VerticalContentAlignment="Center" Margin="0,5,0,0" Padding="20,0,0,0"/>
+								</StackPanel>
+								<StackPanel Margin="10,0,0,0" Orientation="Vertical" Width="90">
+									<TextBlock Text="Tag" Foreground="DarkGray" FontSize="12" FontWeight="Medium"
+									   FontFamily="Montserrat"/>
+									<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+										<TextBlock Text="#" Foreground="DarkGray" FontSize="12" FontWeight="Medium"
+										   FontFamily="Montserrat" VerticalAlignment="Bottom"/>
+										<TextBox Name="tagUser" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+												 Background="Transparent" CaretBrush="LightGray"
+												 BorderBrush="DarkGray" BorderThickness="0,0,0,1" Height="28"
+												 VerticalContentAlignment="Center" Margin="0,5,0,0" HorizontalContentAlignment="Center"/>
+									</StackPanel>
+								</StackPanel>
+								<Button VerticalAlignment="Center" Margin="10,0,0,0" Height="50" Content=">"
+										VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+										Background="#462ad8" BorderThickness="0"
+										CornerRadius="12" Click="Add_User_N"/>
+							</StackPanel>
+						</Border>
+					</Border>
+					<Border Name="Chat" IsVisible="False">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+							<ListBox Background="Transparent" IsHitTestVisible="True" Name="ChatBox" ItemsSource="{Binding Messages_list}" Margin="0,0,0,10">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Horizontal" HorizontalAlignment="{Binding Alignment}">
+											<Border Background="White" MaxWidth="250" CornerRadius="10" Padding="8">
+												<TextBlock Text="{Binding Message}" TextWrapping="Wrap"/>
+											</Border>
+										</StackPanel>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+								<ListBox.Styles>
+									<Style Selector="ListBoxItem">
+										<Setter Property="IsHitTestVisible" Value="False"/>
+									</Style>
+								</ListBox.Styles>
+							</ListBox>
+							<Border Grid.Row="1" Padding="10"  Height="50" CornerRadius="0,0,10,0">
+								<Border.Background>
+									<LinearGradientBrush StartPoint="0%,100%" EndPoint="0%,0%">
+										<GradientStop Color="#FB539B" Offset="0"/>
+										<GradientStop Color="#27003a" Offset="0.07"/>
+										<GradientStop Color="#24105F" Offset="0.8"/>
+										<GradientStop Color="#1c0e49" Offset="1"/>
+									</LinearGradientBrush>
+								</Border.Background>
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="Auto"/>
+									</Grid.ColumnDefinitions>
+									<TextBox Name="MessageTextBox" Grid.Column="0" Margin="0,0,10,0" Width="300" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+									<Button IsDefault="True" Click="SubmitMessage" Name="SendButton" Grid.Column="1" Content="Send" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+								</Grid>
+							</Border>
+						</Grid>
+					</Border>
+					<Border Name="Settings" IsVisible="False" Margin="10">
+						<StackPanel>
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="Encryption key" Foreground="White" VerticalAlignment="Center"/>
+								<TextBlock Text="accepts only hexadecimal numbers" Margin="20,0,0,0" Foreground="White" FontSize="12" FontWeight="Medium" FontFamily="Montserrat"/>
+								<ComboBox Name="ComboDropDown" SelectionChanged="ComboBox_SelectionChanged" Margin="15,0,0,0"  Background="Transparent" VerticalAlignment="Center" IsVisible="False">
+									<ComboBoxItem>
+										<TextBlock Text="advanced 1024"/>
+									</ComboBoxItem>
+								</ComboBox>
+								<Border Width="250" Margin="20,0,0,0" VerticalAlignment="Center" IsVisible="False">
+									<TextBlock  Text="Note: The algorithm was expected to be used with an 'advanced 1024' key" TextWrapping="Wrap"/>
+								</Border>
+							</StackPanel>
+							<StackPanel Name="KeyStack" IsVisible="True">
+								<MaskedTextBox Name="keybox1" Mask="CCCCCCCC-CCCCCCCC-CCCCCCCC-CCCCCCCC" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+											   Background="Transparent" CaretBrush="LightGray"
+											   BorderBrush="DarkGray" BorderThickness="0" Height="28"
+											   VerticalContentAlignment="Center"/>
+								<MaskedTextBox Name="keybox2" Mask="CCCCCCCC-CCCCCCCC-CCCCCCCC-CCCCCCCC" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+											   Background="Transparent" CaretBrush="LightGray"
+											   BorderBrush="DarkGray" BorderThickness="0" Height="28"
+											   VerticalContentAlignment="Center"/>
+								<MaskedTextBox Name="keybox3" Mask="CCCCCCCC-CCCCCCCC-CCCCCCCC-CCCCCCCC" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+											   Background="Transparent" CaretBrush="LightGray"
+											   BorderBrush="DarkGray" BorderThickness="0" Height="28"
+											   VerticalContentAlignment="Center"/>
+								<MaskedTextBox Name="keybox4" Mask="CCCCCCCC-CCCCCCCC-CCCCCCCC-CCCCCCCC" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+											   Background="Transparent" CaretBrush="LightGray"
+											   BorderBrush="DarkGray" BorderThickness="0" Height="28"
+											   VerticalContentAlignment="Center"/>
+							</StackPanel>
+							<Border>
+								<StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="Permutation blocks" Foreground="White" Margin="0,15,0,0" VerticalAlignment="Center"/>
+										<TextBlock Text="accepts only 0-9 numbers, you can skip up to 9 consecutive sections" Margin="20,15,0,0" Foreground="White" FontSize="12" FontWeight="Medium" FontFamily="Montserrat"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut1"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="1-16 block" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut2"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="17-32 block" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut3"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="33-48 block" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut4"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="49-64 block" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut5"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="65-80 block" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut6"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="81-96 block" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut7"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="97-112 block" VerticalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<MaskedTextBox Mask="999-999-999-999-999-999-999-999-999-999-999-999-999-999-999-999" FontSize="13" FontWeight="Medium" FontFamily="Montserrat"
+														Background="Transparent" CaretBrush="LightGray" Name="Permut8"
+														BorderBrush="DarkGray" BorderThickness="0" Height="28"
+														VerticalContentAlignment="Center"/>
+										<TextBlock Text="113-128 block" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13" FontWeight="Medium" FontFamily="Montserrat" Foreground="White"/>
+									</StackPanel>
+								</StackPanel>
+							</Border>
+							<Border VerticalAlignment="Center" HorizontalAlignment="Center">
+								<Button Margin="0,50,0,0" Width="200" Height="30" Background="#462ad8" BorderThickness="0"
+										CornerRadius="12" Content="Continue" Foreground="White" FontSize="12" FontFamily="Montserrat"
+										VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="End_Setting_up" Name="SSSSS"/>
+							</Border>
+						</StackPanel>
+					</Border>
+				</Grid>
+			</Border>
+		</Grid>
+	</Border>
+</UserControl>
