@@ -1,0 +1,28 @@
+D:\VS library\NetworkCall\C# snb\C# snb\bin\Debug\net8.0\C# snb.exe
+D:\VS library\NetworkCall\C# snb\C# snb\bin\Debug\net8.0\C# snb.deps.json
+D:\VS library\NetworkCall\C# snb\C# snb\bin\Debug\net8.0\C# snb.runtimeconfig.json
+D:\VS library\NetworkCall\C# snb\C# snb\bin\Debug\net8.0\C# snb.dll
+D:\VS library\NetworkCall\C# snb\C# snb\bin\Debug\net8.0\C# snb.pdb
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\C# snb.GeneratedMSBuildEditorConfig.editorconfig
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\C# snb.AssemblyInfoInputs.cache
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\C# snb.AssemblyInfo.cs
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\C# snb.csproj.CoreCompileInputs.cache
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\C# snb.dll
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\refint\C# snb.dll
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\C# snb.pdb
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\C# snb.genruntimeconfig.cache
+D:\VS library\NetworkCall\C# snb\C# snb\obj\Debug\net8.0\ref\C# snb.dll
+C:\Users\Rui\source\repos\C# snb\C# snb\bin\Debug\net8.0\C# snb.exe
+C:\Users\Rui\source\repos\C# snb\C# snb\bin\Debug\net8.0\C# snb.deps.json
+C:\Users\Rui\source\repos\C# snb\C# snb\bin\Debug\net8.0\C# snb.runtimeconfig.json
+C:\Users\Rui\source\repos\C# snb\C# snb\bin\Debug\net8.0\C# snb.dll
+C:\Users\Rui\source\repos\C# snb\C# snb\bin\Debug\net8.0\C# snb.pdb
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\C# snb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\C# snb.AssemblyInfoInputs.cache
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\C# snb.AssemblyInfo.cs
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\C# snb.csproj.CoreCompileInputs.cache
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\C# snb.dll
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\refint\C# snb.dll
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\C# snb.pdb
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\C# snb.genruntimeconfig.cache
+C:\Users\Rui\source\repos\C# snb\C# snb\obj\Debug\net8.0\ref\C# snb.dll
